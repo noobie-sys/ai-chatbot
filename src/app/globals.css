@@ -85,7 +85,10 @@ body {
 
 @layer base {
   * {
-    @apply border-border;
+    /* Remove or replace the following line */
+    /* @apply border-border; */
+    /* Example: use a standard border color */
+    @apply border-gray-200;
   }
   body {
     @apply bg-background text-foreground;
