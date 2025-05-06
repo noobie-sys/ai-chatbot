@@ -120,9 +120,117 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  fullname: 'fullname',
+  clerkId: 'clerkId',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DomainScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  icon: 'icon',
+  userId: 'userId'
+};
+
+exports.Prisma.ChatBotScalarFieldEnum = {
+  id: 'id',
+  welcomeMessage: 'welcomeMessage',
+  icon: 'icon',
+  domainId: 'domainId'
+};
+
+exports.Prisma.BillingsScalarFieldEnum = {
+  id: 'id',
+  plan: 'plan',
+  credits: 'credits',
+  userId: 'userId'
+};
+
+exports.Prisma.HelpDeskScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  domainId: 'domainId'
+};
+
+exports.Prisma.FilterQuestionsScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answered: 'answered',
+  domainId: 'domainId'
+};
+
+exports.Prisma.CustomerResponsesScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answered: 'answered',
+  customerID: 'customerID'
+};
+
+exports.Prisma.CustomerScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  domainId: 'domainId'
+};
+
+exports.Prisma.ChatRoomScalarFieldEnum = {
+  id: 'id',
+  live: 'live',
+  mailed: 'mailed',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  customerId: 'customerId'
+};
+
+exports.Prisma.ChatMessageScalarFieldEnum = {
+  id: 'id',
+  message: 'message',
+  role: 'role',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  chatRoomId: 'chatRoomId'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.Plans = exports.$Enums.Plans = {
+  STANDARD: 'STANDARD',
+  PREMIUM: 'PREMIUM',
+  ULTIMATE: 'ULTIMATE'
+};
+
+exports.Role = exports.$Enums.Role = {
+  OWNER: 'OWNER',
+  CUSTOMER: 'CUSTOMER'
+};
 
 exports.Prisma.ModelName = {
-
+  User: 'User',
+  Domain: 'Domain',
+  ChatBot: 'ChatBot',
+  Billings: 'Billings',
+  HelpDesk: 'HelpDesk',
+  FilterQuestions: 'FilterQuestions',
+  CustomerResponses: 'CustomerResponses',
+  Customer: 'Customer',
+  ChatRoom: 'ChatRoom',
+  ChatMessage: 'ChatMessage'
 };
 
 /**
