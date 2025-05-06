@@ -39,7 +39,7 @@ const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
           sizes="30"
           width={0}
           height={0}
-          className="absolute shrink-0 !w-[1600px] top-48 rounded-xl"
+          className="absolute shrink-0 w-[1600px]! top-48 rounded-xl"
         />
       </div>
     </div>
