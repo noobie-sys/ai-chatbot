@@ -18,7 +18,6 @@ const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
             sizes="100vw"
             width={40}
             height={40}
-            className="invert"
           />
           <span>Cornnia AI</span>
         </div>
