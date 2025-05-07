@@ -10,7 +10,7 @@ export const onCompleteUserregistration = async (
   try {
     const registered = await client.user.create({
       data: {
-        fullName,
+        fullname: fullName,
         clerkId,
         type,
         subscription: {
@@ -18,7 +18,7 @@ export const onCompleteUserregistration = async (
         },
       },
       select: {
-        fullName: true,
+        fullname: true,
         clerkId: true,
         type: true,
       },

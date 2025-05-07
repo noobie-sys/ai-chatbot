@@ -248,7 +248,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://neondb_owner:npg_w4ynAb7rZCLB@ep-noisy-cherry-a1b7hedg-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+        "value": "postgresql://ai-chatbot_owner:npg_zXCL82WHqaOj@ep-little-cherry-a4yol7kh-pooler.us-east-1.aws.neon.tech/ai-chatbot?sslmode=require"
       }
     }
   },

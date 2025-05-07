@@ -1,3 +1,4 @@
+"use client";
 import {
   UserRegistertionProps,
   UserRegistrationSchema,
@@ -8,6 +9,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { onCompleteUserregistration } from "@/actions /auth";
 
 export function useSignUpForm() {
   const { signUp, isLoaded, setActive } = useSignUp();
@@ -66,7 +68,7 @@ export function useSignUpForm() {
             await setActive({
               session: completeSignUp.createdSessionId,
             });
-            setLoading(true);
+            setLoading(false);
             router.push("/dashboard");
           }
           if (registerd?.status === 400) {
@@ -76,7 +78,18 @@ export function useSignUpForm() {
           }
         }
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: Error | any) {}
+      } catch (error: Error | any) {
+        toast.error(error.message, {
+          description: error.errors[0].longMessage,
+        });
+        setLoading(false);
+      }
     }
   );
+  return {
+    methods,
+    onHandelSubmit,
+    onGenrateOTP,
+    loading,
+  };
 }
