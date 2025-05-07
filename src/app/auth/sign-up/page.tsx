@@ -1,7 +1,19 @@
+import ButtonHandler from "@/components/forms/sign-up/button-handler";
+import { RegisteredFormStep } from "@/components/forms/sign-up/registered-form";
+import SignUpFormProvider from "@/components/forms/sign-up/sign-up-form-provider";
 import React from "react";
 
 const SignUp = () => {
-  return <div>SignIn</div>;
+  return (
+    <div className="flex-1 py-36 md:px-16 w-full">
+      <div className="flex flex-col h-full gap-3">
+        <SignUpFormProvider>
+          <RegisteredFormStep />
+          <ButtonHandler />
+        </SignUpFormProvider>
+      </div>
+    </div>
+  );
 };
 
 export default SignUp;
