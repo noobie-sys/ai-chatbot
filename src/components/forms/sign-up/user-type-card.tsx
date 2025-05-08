@@ -32,7 +32,7 @@ const UserTypeCard = ({
           userType === value && "border-orange-400"
         )}
       >
-        <CardContent className="flex justify-between ">
+        <CardContent className="flex justify-between cursor-pointer ">
           <div className="flex items-center gap-3">
             <Card
               className={cn(

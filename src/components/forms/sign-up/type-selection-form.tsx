@@ -30,7 +30,7 @@ const TypeSelectionForm = ({ register, userType, setUserType }: Props) => {
         userType={userType}
         value="student"
         title="I am a student"
-        text="Looing to learn about the tool"
+        text="Looking to learn about the tool"
       />
     </div>
   );

@@ -3,6 +3,14 @@ import { useAuthContextHook } from "@/contexts/use-auth-context";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 import TypeSelectionForm from "./type-selection-form";
+import dynamic from "next/dynamic";
+import Loader from "@/components/loader";
+import { LoaderIcon } from "lucide-react";
+
+const DetailForm = dynamic(() => import("./account-details-form"), {
+  ssr: false,
+  loading: () => <LoaderIcon className="animate-spin h-10 w-10" />,
+});
 
 type Props = {};
 
@@ -28,6 +36,7 @@ export const RegisteredFormStep = (props: Props) => {
         />
       );
     case 2:
+      return <DetailForm register={register} errors={errors} />;
     case 3:
   }
 };
