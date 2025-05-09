@@ -12,6 +12,11 @@ const DetailForm = dynamic(() => import("./account-details-form"), {
   loading: () => <LoaderIcon className="animate-spin h-10 w-10" />,
 });
 
+const OTPForm = dynamic(() => import("./otp-form"), {
+  ssr: false,
+  loading: () => <LoaderIcon className="animate-spin h-10 w-10" />,
+});
+
 type Props = {};
 
 export const RegisteredFormStep = (props: Props) => {
@@ -38,5 +43,6 @@ export const RegisteredFormStep = (props: Props) => {
     case 2:
       return <DetailForm register={register} errors={errors} />;
     case 3:
+      return <OTPForm onOTP={onOtp} setOTP={setOnOtp} />;
   }
 };

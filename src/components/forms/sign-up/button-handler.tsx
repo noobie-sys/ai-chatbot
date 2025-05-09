@@ -40,7 +40,7 @@ const ButtonHandler = () => {
               onClick: () =>
                 onGenrateOTP(
                   getValues("email") as string,
-                  getValues("fullname") as string,
+                  getValues("password") as string,
                   setCurrentStep
                 ),
             })}

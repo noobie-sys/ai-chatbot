@@ -54,28 +54,28 @@ const FormGenerator = ({
           />
         </Label>
       );
-    case "select":
-      return (
-        <Label>
-          <select form={form} {...register(name)} id={`label-${Label}`}>
-            {options?.length &&
-              options.map((option) => (
-                <option value={option.value} key={option.id}>
-                  {option.label}
-                </option>
-              ))}
-          </select>
-          <ErrorMessage
-            errors={errors}
-            name={name}
-            render={({ message }) => (
-              <p className="text-red-400 mt-2">
-                {message === "Required" ? " " : message}
-              </p>
-            )}
-          />
-        </Label>
-      );
+    // case "select":
+    //   return (
+    //     <Label>
+    //       <select form={form} {...register(name)} id={`label-${Label}`}>
+    //         {options?.length &&
+    //           options.map((option) => (
+    //             <option value={option.value} key={option.id}>
+    //               {option.label}
+    //             </option>
+    //           ))}
+    //       </select>
+    //       <ErrorMessage
+    //         errors={errors}
+    //         name={name}
+    //         render={({ message }) => (
+    //           <p className="text-red-400 mt-2">
+    //             {message === "Required" ? " " : message}
+    //           </p>
+    //         )}
+    //       />
+    //     </Label>
+    //   );
     // case "textarea":
     //   return (
     //     <Label className="flex flex-col gap-2" htmlFor={`input-${label}`}>
