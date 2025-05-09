@@ -23,11 +23,23 @@ export const UserRegistrationSchema: ZodType<UserRegistertionProps> = z
       .min(8, { message: "Your password must be atleast 8 characters long" })
       .max(64, {
         message: "Your password can not be longer then 64 characters long",
-      }),
-    // .refine(
-    //   (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ""),
-    //   "password should contain only alphabets and numbers"
-    // ),
+      })
+      .refine(
+        (value) => /[A-Z]/.test(value),
+        "Password must contain at least one uppercase letter"
+      )
+      .refine(
+        (value) => /[a-z]/.test(value),
+        "Password must contain at least one lowercase letter"
+      )
+      .refine(
+        (value) => /[0-9]/.test(value),
+        "Password must contain at least one number"
+      )
+      .refine(
+        (value) => /[^A-Za-z0-9]/.test(value),
+        "Password must contain at least one special character"
+      ),
     confirmPassword: z.string(),
     otp: z.string().min(6, { message: "You must enter a 6 digit code" }),
   })

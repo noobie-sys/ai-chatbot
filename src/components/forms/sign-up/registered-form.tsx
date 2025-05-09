@@ -24,6 +24,7 @@ export const RegisteredFormStep = (props: Props) => {
     register,
     formState: { errors },
     setValue,
+    control,
   } = useFormContext();
   const { currentStep } = useAuthContextHook();
   const [onOtp, setOnOtp] = React.useState<string>("");
@@ -41,7 +42,9 @@ export const RegisteredFormStep = (props: Props) => {
         />
       );
     case 2:
-      return <DetailForm register={register} errors={errors} />;
+      return (
+        <DetailForm register={register} errors={errors} control={control} />
+      );
     case 3:
       return <OTPForm onOTP={onOtp} setOTP={setOnOtp} />;
   }
