@@ -1,103 +1,125 @@
+"use client";
+import { Button } from "@/components/ui/button";
+import { SignedOut, SignOutButton, useClerk } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 import Image from "next/image";
+import Navbar from "@/components/navbar/navbar";
+import { Check, SparkleIcon } from "lucide-react";
+import { pricingCard } from "@/constants/pricing-card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-(family-name:--font-geist-sans)">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-(family-name:--font-geist-mono)">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-(family-name:--font-geist-mono) font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { signOut } = useClerk();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const handleSignOut = async () => {
+    console.log("Signing out...");
+    // Perform any additional sign-out logic here
+    // For example, you can clear user data or perform other cleanup tasks
+    // Then, call the signOut function from Clerk to initiate the sign-out process
+    // This will redirect the user to the sign-in page after successful sign-out
+    const success = await signOut();
+
+    if (success!) {
+      redirect("/auth/sign-up");
+    }
+  };
+
+  return (
+    <main className="">
+      <Navbar />
+      <section className="flex items-center justify-center flex-col mt-[80px] gap-4">
+        <span className="text-orange bg-orange/20 py-2 rounded-full text-xs px-4 font-semibold flex items-center gap-1">
+          <SparkleIcon className="h-4 w-4 animate-pulse" /> An AI powered Sales
+          assistant chatbot
+        </span>
+        <Image
+          src={"/images/header-image.png"}
+          alt="Header Image"
+          width={1000}
+          height={200}
+          className="max-w-lg object-contain"
+        />
+        <p className="text-center max-w-[500px]">
+          Your AI powered sales assistant! Embed Corinna AI into any website
+          with just a snippet of code!
+        </p>
+        <Button className="bg-orange font-bold text-white px-4 hover:bg-orange/80">
+          Start for free
+        </Button>
+        <Image
+          src={"/svgs/Frame.svg"}
+          alt="Header Image"
+          width={400}
+          height={100}
+          className="object-contain mt-4"
+        />
+      </section>
+      <section className="flex justify-center items-center flex-col gap-4 mt-10">
+        <h2 className="text-5xl text-center font-bold">
+          {" "}
+          Choose what fits you right
+        </h2>
+        <p className="text-muted-foreground text-center max-w-lg font-medium text-sm tracking-normal">
+          Our Straightforward pricing plans are tailored to meet your needs. If
+          you&apos;re not ready to commit you can get started for free
+        </p>
+      </section>
+      <div className="flex justify-center gap-4 flex-wrap mt-6">
+        {pricingCard.map((card) => {
+          return (
+            <Card
+              key={card.title}
+              className={cn(
+                "w-[300px] flex flex-col justify-between",
+                card.title === "Unlimited" && "border-2 border-primary"
+              )}
+            >
+              <CardHeader>
+                <CardTitle className="text-orange">{card.title}</CardTitle>
+                <CardDescription>{card.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <span className="text-4xl font-bold ">{card.price}</span>
+                <span className="text-muted-foreground">
+                  <span className="text-sm">/ month</span>
+                </span>
+              </CardContent>
+              <CardFooter className="flex flex-col items-start gap-2">
+                <div>
+                  {card.features.map((feature) => {
+                    return (
+                      <div key={feature} className="flex gap-3">
+                        <Check className="h-4 w-4 text-orange" />
+                        <span className="text-sm">{feature}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <Link
+                  href={`/agency?plan=${card.title}`}
+                  className="w-full mt-12 border-orange font-bold"
+                >
+                  <Button
+                    className="w-full bg-orange text-white hover:bg-orange/80"
+                    size={"sm"}
+                  >
+                    Get Started
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          );
+        })}
+      </div>
+    </main>
   );
 }

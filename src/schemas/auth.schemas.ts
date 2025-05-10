@@ -51,3 +51,24 @@ export const UserRegistrationSchema: ZodType<UserRegistertionProps> = z
     message: "Your emails not match",
     path: ["confirmEmail"],
   });
+
+// Login Shcemas
+export type UserLoginProps = {
+  email: string;
+  password: string;
+};
+
+export const UserLoginSchema: ZodType<UserLoginProps> = z.object({
+  email: z.string().email({ message: "Incorrect email format" }),
+  password: z
+    .string()
+    .min(8, { message: "Your password must be atleast 8 characters long" }),
+});
+
+// Forget Password Schema
+export type ForgetPasswordProps = {
+  email: string;
+};
+export const ForgetPasswordSchema: ZodType<ForgetPasswordProps> = z.object({
+  email: z.string().email({ message: "Incorrect email format" }),
+});
